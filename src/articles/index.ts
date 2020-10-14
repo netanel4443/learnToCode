@@ -4,6 +4,7 @@ import intents from './intent'
 import alertDialog from './alertDialog'
 import activityLifecycle from './activityLifecycle'
 import toast from './toast'
+import fragment from './fragment'
 export const androidSubjects=
 [
   {
@@ -20,6 +21,11 @@ export const androidSubjects=
     subject:activityLifecycle,
     language:'kotlin',
     subjectName:'Activity Lifecycle'
+  },
+  {
+    subject:fragment,
+    language:'kotlin',
+    subjectName:'Fragment Lifecycle'
   },
   {
     subject: toast,

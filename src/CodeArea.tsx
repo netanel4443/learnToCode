@@ -3,14 +3,12 @@ import { View, Text, ScrollView, StyleSheet, } from 'react-native'
 import SyntaxHighlighter from 'react-native-syntax-highlighter'; 
 import { dark} from 'react-syntax-highlighter/styles/hljs';
 import HTMLView from 'react-native-htmlview';
-import {SPLIT_CHAR} from './articles/index'
-import {androidSubjects} from './articles/index'
 import { useSelector } from 'react-redux';
 import { RootState } from './reducers/rootReducer';
 
 const splitBetweenTextAndCode=()=>{
   const article:[] = useSelector((state:RootState) => state.homeReducer.article)
-  // const splitedArr=androidSubjects[0].subject.split(SPLIT_CHAR)
+
   const elementsArr:any[]=[]
 
   article.forEach((textOrCode,index)=>{
