@@ -10,11 +10,20 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "react": "16.13.1",
+    "@react-native-community/masked-view": "^0.1.10",
+    "@react-navigation/native": "^5.7.6",
+    "@react-navigation/stack": "^5.9.3",
+    "react": "^16.13.1",
     "react-native": "0.63.3",
     "react-native-fs": "^2.16.6",
+    "react-native-gesture-handler": "^1.8.0",
     "react-native-htmlview": "^0.16.0",
-    "react-native-syntax-highlighter": "^2.1.0"
+    "react-native-reanimated": "^1.13.1",
+    "react-native-safe-area-context": "^3.1.8",
+    "react-native-screens": "^2.11.0",
+    "react-native-syntax-highlighter": "^2.1.0",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
@@ -23,8 +32,11 @@
     "@types/jest": "^26.0.14",
     "@types/react": "^16.9.52",
     "@types/react-native": "^0.63.25",
+    "@types/react-native-htmlview": "^0.12.2",
+    "@types/react-redux": "^7.1.9",
     "@types/react-syntax-highlighter": "^11.0.5",
     "@types/react-test-renderer": "^16.9.3",
+    "@types/redux": "^3.6.0",
     "babel-jest": "^26.5.2",
     "eslint": "^7.11.0",
     "jest": "^26.5.2",
@@ -34,5 +46,9 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/netanel4443/learnToCode.git",
+  "author": "Netanel Izhak <netanel4443@gmail.com>",
+  "license": "MIT"
 }

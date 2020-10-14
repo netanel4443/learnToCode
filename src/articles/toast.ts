@@ -7,6 +7,6 @@ ${SPLIT_CHAR}
 Toast.makeText(context,message,time).show()
 ${SPLIT_CHAR}
 \u2022 context-our context
-\u2022 message-the message we want to show to a user
+\u2022 message-the message we want to show to the user
 \u2022 time-Toast.LENGTH_SHORT or Toast.LENGTH_LONG
 `

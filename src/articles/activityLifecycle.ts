@@ -1,4 +1,4 @@
-import { SPLIT_CHAR } from ".";
+import { SPLIT_CHAR } from "./index";
 
 export default
 `
