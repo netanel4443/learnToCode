@@ -1,4 +1,5 @@
-import {SPLIT_CHAR} from './index'
+const SPLIT_CHAR='$'
+
 export default
 `
 An Intent is a messaging object with Intents we can perform different actions like : open a new screen(activity), start a service and even share data between apps.

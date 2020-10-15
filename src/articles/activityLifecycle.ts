@@ -1,4 +1,4 @@
-import { SPLIT_CHAR } from "./index";
+const SPLIT_CHAR='$'
 
 export default
 `

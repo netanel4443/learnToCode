@@ -1,8 +1,8 @@
-import {SPLIT_CHAR} from './index'
+const SPLIT_CHAR='$'
 
 export default 
 `
-Fragment is a component that can has an UI screen(but not mandatory).
+Fragment, like activity, can have an UI screen(but not mandatory).
 We can add multiple Fragments to an activity.
 Fragment has its own lifecycle but its attached to the hosting 
 activity lifecycle, that means, if the activity is paused,stopped,destroyed

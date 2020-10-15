@@ -5,8 +5,7 @@ import * as action from '../actions/homeActions'
 import { RootState } from '../reducers/rootReducer'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { screenNames } from '../navigation'
-
-
+import LoadingSpinnerModal from '../ui/LoadingSpinnerModal'
 
 interface Props {
   navigation: StackNavigationProp<any>
@@ -15,37 +14,35 @@ const ListOfSubjects = ({navigation}:Props) => {
 
   const dispatch = useDispatch()
   const mainTopic:[{subject:string,language:string,subjectName:string}] = useSelector((state:RootState) => state.homeReducer.mainTopic)
-  
+  const isLoading= useSelector((state:RootState) => state.homeReducer.isLoading)
+ 
   useEffect(() => {
     dispatch(action.getMainTopic())
   }, [])
 
   const getAllSubjectNames=(item:ListRenderItemInfo<{subject: string; language: string; subjectName: string;}>):any=>{
   return (
-    // <View   style={styles.subjectContainer}>
+ 
       <TouchableOpacity 
       style={styles.subjectContainer}
         onPress={()=>{
-          dispatch(action.passMainTopicArticle(item.item.subject))
           navigation.navigate(screenNames.CodeArea)
+            dispatch(action.getChosenArticle(item.item.subject))
          }
         }>  
         <Text style={styles.subjectName}>{item.item.subjectName}</Text>
-      </TouchableOpacity>
-    // </View>
-      
+      </TouchableOpacity>      
     )
   }
-  
-  
+
   return (
     <View style={styles.main}>
       <FlatList
         data={mainTopic}
         renderItem={item=>getAllSubjectNames(item)}
         keyExtractor={item=>item.subjectName}
-        // numColumns={2}
       />
+      <LoadingSpinnerModal isVisible={isLoading}/>
     </View>
   )
 }

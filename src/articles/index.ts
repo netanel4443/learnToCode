@@ -1,10 +1,10 @@
-export const SPLIT_CHAR='$'
-
 import intents from './intent'
 import alertDialog from './alertDialog'
 import activityLifecycle from './activityLifecycle'
 import toast from './toast'
 import fragment from './fragment'
+
+
 export const androidSubjects=
 [
   {

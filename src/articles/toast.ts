@@ -1,4 +1,4 @@
-import {SPLIT_CHAR} from './index'
+const SPLIT_CHAR='$'
 
 export default 
 `A toast is a popup message that we can show to users.

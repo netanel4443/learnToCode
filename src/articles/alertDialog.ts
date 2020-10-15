@@ -1,4 +1,4 @@
-import {SPLIT_CHAR} from './index'
+const SPLIT_CHAR='$'
 export default
 `
 AlertDialog is a small screen that can appear to users as a result
