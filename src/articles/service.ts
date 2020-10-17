@@ -1,12 +1,12 @@
-import { SpringUtils } from "react-native-reanimated"
 
-const SPLIT_CHAR={'$'}
+const SPLIT_CHAR='$'
+
 export default 
 `Service is one of 4 app components(activity,service,broadcast receiver,content provider)
 Service by default runs on the main thread so if you need to 
 make operations that can block the main thread,
 you need to consider using another thread for it.
-Services don't supply UI but we can add UI with WindowManager.
+Services don't supply UI but we can add an UI with WindowManager.
 There are 3 types of services:
 <b>Foreground</b>:
 A foreground service must display a notification.
@@ -24,10 +24,15 @@ the app the background service is stopped(depends on target sdk version).
 We'll talk about it later.
 
 <b>Service lifescycle</b> 
-onCreate()               onCreate() - lifecycle for bound service
-onStartCommand()         onBind()
-onDestroy()              onUnbind() 
-                         onDestroy() 
+onCreate()           
+onStartCommand()        
+onDestroy()  
+
+<b>lifecycle for bound service</b>
+onCreate() 
+onBind()
+onUnbind() 
+onDestroy()                 
 
 <b>onCreate()</b>
 When the service is created, called once
@@ -40,8 +45,8 @@ ${SPLIT_CHAR}
 <b>onStartCommand()</b>
 Called every time the service starts, onCreate()
 is not called after the service is already created.
-We can pass data thrue intent and receive it here yet,
-we need to be careful because it maybe be null.
+We can pass data thru intent and receive it here. Yet,
+we need to be careful because it may be null.
 ${SPLIT_CHAR}
 override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
   super.onStartCommand(intent, flags, startId)

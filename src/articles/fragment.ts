@@ -3,14 +3,14 @@ const SPLIT_CHAR='$'
 export default 
 `
 Fragment, like activity, can have an UI screen(but not mandatory).
-We can add multiple Fragments to an activity.
+We can add multiple fragments to an activity.
 Fragment has its own lifecycle but its attached to the hosting 
 activity lifecycle, that means, if the activity is paused,stopped,destroyed
 so is the hosted fragment but not the opposite,
 if we remove a fragment it will be destroyed, but it won't affect
 the hosting activity lifecycle.
 
-Fragment lifecycle chain:
+<b>Fragment lifecycle chain:</b>
 onAttach()
 onCreate()
 onCreateView()
@@ -28,8 +28,8 @@ First called when the fragment is attached to the hosting context.
 We can get the hosting context in this method (or calling requiteContext()).
 
 <b>onCreate()</b>
-onCreate is called when creating the fragment
-At this point we can initialize data that we want 
+onCreate() is called when creating the fragment.
+At this point we can initialize data that we want to be 
 initialized once and retain it to prevent reinitialization
 due to lifecycle changes.
 ${SPLIT_CHAR}
@@ -47,7 +47,7 @@ override fun onCreateView(
 ): View? {
   val view= inflater.inflate(R.layout.some_layout, container, false)
   //to get the TextView from some_layout we need to call it with
-  //view + its id like below. 
+  //view. + its id like below. 
   //we can choose any name instead of view
   val textView=view.textview_id
   //finally, return it
@@ -107,6 +107,7 @@ if onCreateView() is called again, a new
 view will be created.
 At this poin we need to do our clean ups 
 that related to the detached view.
+We can't access the view after this method.
 ${SPLIT_CHAR}
 override fun onDestroyView() {
   super.onDestroyView()

@@ -6,6 +6,7 @@ import { RootState } from '../reducers/rootReducer'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { screenNames } from '../navigation'
 import LoadingSpinnerModal from '../ui/LoadingSpinnerModal'
+import CommonFlatList from '../ui/common/CommonFlatList'
 
 interface Props {
   navigation: StackNavigationProp<any>
@@ -34,14 +35,20 @@ const ListOfSubjects = ({navigation}:Props) => {
       </TouchableOpacity>      
     )
   }
+  const onItemPress=(item:{subject: string; language: string; subjectName: string;})=>{
+        navigation.navigate(screenNames.CodeArea)
+            dispatch(action.getChosenArticle(item.subject))
+  }
+  
 
   return (
     <View style={styles.main}>
-      <FlatList
+      {/* <FlatList
         data={mainTopic}
         renderItem={item=>getAllSubjectNames(item)}
         keyExtractor={item=>item.subjectName}
-      />
+      /> */}
+      <CommonFlatList itemList={mainTopic} pressAction={(item)=>onItemPress(item)}/>
       <LoadingSpinnerModal isVisible={isLoading}/>
     </View>
   )
