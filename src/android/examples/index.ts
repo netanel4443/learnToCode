@@ -1,5 +1,6 @@
 import chatApp from './chatApp'
 import { SubjectDetails } from '../../data/SubjectDetails'
+import genericRecyclerView from './genericRecyclerView'
 
 export const androidExamples=
 [
@@ -7,6 +8,11 @@ export const androidExamples=
     subject:chatApp,
     language:'kotlin',
     subjectName:'Chat App'
+  },
+ {
+    subject:genericRecyclerView,
+    language:'kotlin',
+    subjectName:'Generic RecyclerView'
   },
 ]
 
