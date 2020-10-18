@@ -1,12 +1,14 @@
 import { ActivityIndicator } from 'react-native'
 import { act } from 'react-test-renderer'
 import * as types from '../actions/actionTypes/homeActionTypes'
+import { SubjectDetails } from '../data/SubjectDetails'
 
 const initialState={
-mainTopic:[],
-splitedArticle:[],
-isLoading:false,
-chosenArticle:''
+  mainTopic:[],
+  splitedArticle:[],
+  isLoading:false,
+  chosenArticle:'',
+  articlesOrExamplesNames:[]
 }
 
 export default (state=initialState,action:any)=>{
@@ -31,7 +33,12 @@ export default (state=initialState,action:any)=>{
       return{
         ...state,
         isLoading:action.payload
-      }      
+      }   
+   case types.GET_ARTICLES_OR_EXAMPLES_LIST:
+     return{
+       ...state,
+       articlesOrExamplesNames:action.payload
+     }      
     default: return state
   }
 }

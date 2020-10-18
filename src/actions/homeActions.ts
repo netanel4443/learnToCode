@@ -1,17 +1,21 @@
 import * as types from './actionTypes/homeActionTypes'
-import {androidSubjects} from '../articles/index'
+import {androidArticles} from '../android/articles/index'
+import { TopicBuilder } from '../data/TopicBuilder'
+import androidTopic from '../android/index'
 const SPLIT_CHAR='$'
+
+const topicBuilder=new TopicBuilder()
 
 export const getMainTopic=()=>{
   return{
     type:types.GET_MAIN_TOPIC,
-    payload:androidSubjects
+    payload:androidArticles
   }
 }
 
 export const passMainTopicArticle=(article:string)=>async(dispatch:any)=>{
   let splitedArticle:string[]=[]
-  console.log(article.length)
+
   if(article.length!==0){
     return(
       splitedArticle= await new  Promise<string[]>(resolve => resolve(article.split(SPLIT_CHAR))),
@@ -34,9 +38,29 @@ export const showOrHideLoadingSpinner=(visibility:boolean)=>{
     payload:visibility
   }
 }
-export const getChosenArticle=(chosenArticle:string)=>{
+
+export const setExampleOrArticleChoice=(optionChosen:string)=>{
+  topicBuilder.setArticleOrExample(optionChosen)
+}
+
+export const setChosenSubject=(chosenSubject:string)=>{
+ topicBuilder.setSubject(chosenSubject)
+ const articlesOrExamples=androidTopic.get(topicBuilder.getArticleOrExample())?.get(topicBuilder.getSubject())?.subject
+
   return{
     type:types.GET_CHOSEN_ARTICLE,
-    payload:chosenArticle
+    payload:articlesOrExamples
+  }
+}
+
+export const getExamplesOrArticleSubjects=()=>{
+  const tmpArray:string[]=[]
+  androidTopic.get(topicBuilder.getArticleOrExample())?.forEach((value,key)=>{
+    tmpArray.push(key)
+  })
+ 
+  return{
+    type:types.GET_ARTICLES_OR_EXAMPLES_LIST,
+    payload:tmpArray
   }
 }

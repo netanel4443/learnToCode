@@ -12,6 +12,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {screenNames} from './src/navigation/index'
 import thunk from 'redux-thunk';
+import TopicsListScreen from './src/screens/TopicsListScreen'
+import ExamplesOrArticlesScreen from './src/screens/ExamplesOrArticlesScreen'
 
 
 const store=createStore(rootReducer,applyMiddleware(thunk))
@@ -21,8 +23,9 @@ const app=()=>{
   const screenOptions={ headerShown:null}//apply for all screens
   return(
     <Provider store={store}>
-      <NavigationContainer  >
-      <Stack.Navigator screenOptions={screenOptions} initialRouteName={screenNames.ListOfSubjects}>
+      <NavigationContainer>
+      <Stack.Navigator screenOptions={screenOptions} initialRouteName={screenNames.ExamplesOrArticlesScreen}>
+        <Stack.Screen name={screenNames.ExamplesOrArticlesScreen} component={ExamplesOrArticlesScreen} />
         <Stack.Screen name={screenNames.ListOfSubjects} component={ListOfSubjects} />
         <Stack.Screen name={screenNames.CodeArea} component={CodeArea} />
       </Stack.Navigator>

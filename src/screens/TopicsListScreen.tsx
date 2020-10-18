@@ -4,36 +4,33 @@ import { useDispatch, useSelector } from 'react-redux'
 import * as action from '../actions/homeActions'
 import { RootState } from '../reducers/rootReducer'
 import { StackNavigationProp } from '@react-navigation/stack'
+import {  RouteProp } from '@react-navigation/native'
 import { screenNames } from '../navigation'
 import CommonFlatList from '../ui/common/CommonFlatList'
-import { SubjectDetails } from '../data/SubjectDetails'
-import { androidArticles } from '../android/articles'
-
 
 interface Props {
   navigation: StackNavigationProp<any>
+  route:RouteProp<any>
+
 }
-const ListOfSubjects = ({navigation}:Props) => {
+const TopicsListScreen = ({navigation,route}:Props) => {
 
   const dispatch = useDispatch()
-  const articlesOrExamplesNames:string[]= useSelector((state:RootState) => state.homeReducer.articlesOrExamplesNames)
- 
-  useEffect(() => {
-    // dispatch(action.getMainTopic())
-    dispatch(action.getExamplesOrArticleSubjects())
-  }, [])
 
+  useEffect(() => {
+    dispatch(action.getMainTopic(route.params))
+  }, [])
+  const mainTopic:[] = useSelector((state:RootState) => state.homeReducer.mainTopic)
+
+ 
   const onItemPress=(item:string)=>{
-         navigation.navigate(screenNames.CodeArea)
-        dispatch(action.setChosenSubject(item))
+      navigation.push(screenNames.ListOfSubjects,{item})
   }
   
 
   return (
     <View style={styles.main}>
-      
-      <CommonFlatList itemList={articlesOrExamplesNames} pressAction={(item)=>onItemPress(item)}/>
-   
+      <CommonFlatList itemList={mainTopic} pressAction={(item)=>onItemPress(item)}/>
     </View>
   )
 }
@@ -63,4 +60,4 @@ const styles=StyleSheet.create({
   },
 })
 
-export default ListOfSubjects
+export default TopicsListScreen

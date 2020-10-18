@@ -74,8 +74,6 @@ const styles=StyleSheet.create({
   indicator:{
     marginTop:'auto',
     marginBottom:'auto',
-   
-
   }
 })
 

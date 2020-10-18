@@ -6,8 +6,10 @@ import fragment from './fragment'
 import service from './service'
 import liveData from './liveData'
 import viewModel from './viewModel'
+import { SubjectDetails } from '../../data/SubjectDetails'
+import { sub } from 'react-native-reanimated'
 
-export const androidSubjects=
+export const androidArticles=
 [
   {
     subject:intents,
@@ -50,4 +52,14 @@ export const androidSubjects=
     subjectName:'Toast'
   },
 ]
+
+export const toMap=()=>{
+  const tmpSubjectMap=new Map<string,SubjectDetails>()
+  androidArticles.forEach((subject,index)=>{
+    tmpSubjectMap.set(subject.subjectName,subject)
+  })
+  return tmpSubjectMap
+}
+
+
  

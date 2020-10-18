@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
    private fun addFakeUsers(){
       for(i in 0..19){
-        usersAdapter.setData("New user $i")
+        usersAdapter.setData("New user"+i)
       }
    }
 

@@ -6,7 +6,7 @@ interface Props<T> {
   itemList:T[]
 
 }
-const CommonFlatList= <T extends object> ({pressAction,itemList}:Props<T>) => {
+const CommonFlatList= <T extends string>({pressAction,itemList}:Props<T>) => {
 
   useEffect(() => {
 
@@ -18,7 +18,7 @@ const CommonFlatList= <T extends object> ({pressAction,itemList}:Props<T>) => {
       style={styles.subjectContainer}
         onPress={()=>{ pressAction(item.item) }
         }>  
-        <Text style={styles.subjectName}>{item.item.toString()}</Text>
+        <Text style={styles.subjectName}>{item.item}</Text>
       </TouchableOpacity>      
     )
   }
