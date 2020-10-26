@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet, FlatList, ListRenderItemInfo, ActionSheetIOS } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, FlatList, ListRenderItemInfo, ActionSheetIOS, ViewPropTypes, ViewProps } from 'react-native'
 
 interface Props<T> {
   pressAction(item:T):void
@@ -14,9 +14,10 @@ const CommonFlatList= <T extends string>({pressAction,itemList}:Props<T>) => {
 
   const getAllSubjectNames=(item:ListRenderItemInfo<T>):any=>{
   return (
-      <TouchableOpacity 
-      style={styles.subjectContainer}
-        onPress={()=>{ pressAction(item.item) }
+      <TouchableOpacity
+        testID={item.item}
+        style={styles.subjectContainer}
+        onPress={()=>{ pressAction(item.item)}
         }>  
         <Text style={styles.subjectName}>{item.item}</Text>
       </TouchableOpacity>      

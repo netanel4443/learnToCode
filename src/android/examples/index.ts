@@ -1,18 +1,30 @@
 import chatApp from './chatApp'
 import { SubjectDetails } from '../../data/SubjectDetails'
 import genericRecyclerView from './genericRecyclerView'
+import covid19App from './covid19App'
+import splashScreen from './splashScreen'
 
 export const androidExamples=
 [
   {
     subject:chatApp,
-    language:'kotlin',
-    subjectName:'Chat App'
+    language:'kiotlin',
+    subjectName:'Chat app'
   },
- {
+  {
     subject:genericRecyclerView,
     language:'kotlin',
-    subjectName:'Generic RecyclerView'
+    subjectName:'Generic recyclerView'
+  },
+  {
+    subject:covid19App,
+    language:'kotlin',
+    subjectName:'Covid-19 app'
+  },
+{
+    subject:splashScreen,
+    language:'kotlin',
+    subjectName:'Splash screen'
   },
 ]
 

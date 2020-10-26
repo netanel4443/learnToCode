@@ -1,4 +1,4 @@
-const SPLIT_CHAR='$'
+const SPLIT_CHAR="$$"
 
 export default
 `

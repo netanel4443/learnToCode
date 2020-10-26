@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
-import { View, Text, ScrollView, StyleSheet, ActivityIndicator, } from 'react-native'
+import { View,  ScrollView, StyleSheet, ActivityIndicator, } from 'react-native'
 import SyntaxHighlighter from 'react-native-syntax-highlighter'; 
 import { dark} from 'react-syntax-highlighter/styles/hljs';
 import HTMLView from 'react-native-htmlview';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from './reducers/rootReducer';
-import * as action from './actions/homeActions'
+import { RootState } from '../../reducers/rootReducer';
+import * as action from '../../actions/homeActions'
+import { showInterstitialAd } from '../../ui/common/admob/InterstitialAdAdmob';
 
 
 const CodeArea = () => {
@@ -17,21 +18,22 @@ const CodeArea = () => {
     dispatch(action.passMainTopicArticle(chosenArticle))
     return () => {
     dispatch(action.passMainTopicArticle(''))//reset article length in order to show actionindicator next time this screen loads
-    }
+     showInterstitialAd()
+  }
   }, [])
 
-  const splitBetweenTextAndCode=()=>{
-
+  function splitBetweenTextAndCode(){
+   
     const elementsArr:any[]=[]
-
-    splitedArticle.forEach((textOrCode,index)=>{
+   
+    Array.from(splitedArticle).forEach((textOrCode,index)=>{
     
      if(index%2!==0){
       elementsArr.push(
         <SyntaxHighlighter
           key={index}
           style={dark}
-          customStyle={{marginLeft:3,marginRight:3,borderRadius:3}}
+          customStyle={{}}
           language='kotlin'
           fontSize={15}
           highlighter={"hljs"}
@@ -57,15 +59,19 @@ const CodeArea = () => {
   }
 
   return (
+    
     <View style={{flex:1,backgroundColor:'#e6e6e6',flexDirection:'column'}}>
       {splitedArticle.length==0
         ?
         <ActivityIndicator style={styles.indicator}  size='large' color={'#000'}/>
        :
       <ScrollView>
+     
         {splitBetweenTextAndCode()}
       </ScrollView>
+      
       }
+   
     </View>
   )
 }

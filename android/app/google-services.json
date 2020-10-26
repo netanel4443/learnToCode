@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "649814960066",
+    "firebase_url": "https://learn-to-code-c1b9c.firebaseio.com",
+    "project_id": "learn-to-code-c1b9c",
+    "storage_bucket": "learn-to-code-c1b9c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649814960066:android:8ed3caa52cfa024544d85b",
+        "android_client_info": {
+          "package_name": "com.learntocode"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "649814960066-mri8cvr9ju08hdsrb0qr3amrjnojnud6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5yUDRnQ0g0evZgKEnq36RAWxxk-pTxj0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "649814960066-mri8cvr9ju08hdsrb0qr3amrjnojnud6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

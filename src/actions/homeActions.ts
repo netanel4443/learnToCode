@@ -2,7 +2,7 @@ import * as types from './actionTypes/homeActionTypes'
 import {androidArticles} from '../android/articles/index'
 import { TopicBuilder } from '../data/TopicBuilder'
 import androidTopic from '../android/index'
-const SPLIT_CHAR='$'
+const SPLIT_CHAR="$$"
 
 const topicBuilder=new TopicBuilder()
 
@@ -15,7 +15,7 @@ export const getMainTopic=()=>{
 
 export const passMainTopicArticle=(article:string)=>async(dispatch:any)=>{
   let splitedArticle:string[]=[]
-
+  
   if(article.length!==0){
     return(
       splitedArticle= await new  Promise<string[]>(resolve => resolve(article.split(SPLIT_CHAR))),

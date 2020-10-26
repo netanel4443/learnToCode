@@ -1,6 +1,4 @@
-import { SpringUtils } from "react-native-reanimated"
-
-const SPLIT_CHAR='$'
+const SPLIT_CHAR="$$"
 
 export default
 `

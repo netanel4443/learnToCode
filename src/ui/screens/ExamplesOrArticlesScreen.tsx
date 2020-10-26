@@ -1,27 +1,23 @@
 import React, { useEffect } from 'react'
-import { View, StyleSheet} from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
-import * as action from '../actions/homeActions'
+import { View, StyleSheet, Text} from 'react-native'
+import * as action from '../../actions/homeActions'
 import { StackNavigationProp } from '@react-navigation/stack'
-import { screenNames } from '../navigation'
-import CommonFlatList from '../ui/common/CommonFlatList'
+import { screenNames } from '../../navigation'
+import CommonFlatList from '../../ui/common/CommonFlatList'
+
 
 interface Props {
   navigation: StackNavigationProp<any>
 }
 
-const ExamplesOrArticles = ({navigation}:Props) => {
-
-  const dispatch = useDispatch()
-
+const ExamplesOrArticlesScreen = ({navigation}:Props) => {
+ 
   const mainTopic:string[] =['Articles','Examples']
 
- 
   const onItemPress=(item:string)=>{
      action.setExampleOrArticleChoice(item)
-      navigation.navigate(screenNames.ListOfSubjects)
+     navigation.navigate(screenNames.ListOfSubjects)
   }
-  
 
   return (
     <View style={styles.main}>
@@ -37,4 +33,4 @@ const styles=StyleSheet.create({
   },
 })
 
-export default ExamplesOrArticles
+export default ExamplesOrArticlesScreen

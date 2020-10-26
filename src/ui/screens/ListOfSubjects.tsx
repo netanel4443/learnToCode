@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, FlatList, ListRenderItemInfo, ActionSheetIOS } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import * as action from '../actions/homeActions'
-import { RootState } from '../reducers/rootReducer'
+import * as action from '../../actions/homeActions'
+import { RootState } from '../../reducers/rootReducer'
 import { StackNavigationProp } from '@react-navigation/stack'
-import { screenNames } from '../navigation'
-import CommonFlatList from '../ui/common/CommonFlatList'
-import { SubjectDetails } from '../data/SubjectDetails'
-import { androidArticles } from '../android/articles'
-
+import { screenNames } from '../../navigation'
+import CommonFlatList from '../../ui/common/CommonFlatList'
 
 interface Props {
   navigation: StackNavigationProp<any>
@@ -30,10 +27,8 @@ const ListOfSubjects = ({navigation}:Props) => {
   
 
   return (
-    <View style={styles.main}>
-      
+    <View testID='listOfSubject' style={styles.main}>
       <CommonFlatList itemList={articlesOrExamplesNames} pressAction={(item)=>onItemPress(item)}/>
-   
     </View>
   )
 }

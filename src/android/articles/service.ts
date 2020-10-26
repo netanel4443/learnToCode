@@ -1,5 +1,4 @@
-
-const SPLIT_CHAR='$'
+const SPLIT_CHAR="$$"
 
 export default 
 `Service is one of 4 app components(activity,service,broadcast receiver,content provider)

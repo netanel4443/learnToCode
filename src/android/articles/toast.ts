@@ -1,4 +1,4 @@
-const SPLIT_CHAR='$'
+const SPLIT_CHAR="$$"
 
 export default 
 `A toast is a popup message that we can show to users.
@@ -8,5 +8,5 @@ Toast.makeText(context,message,time).show()
 ${SPLIT_CHAR}
 \u2022 context-our context
 \u2022 message-the message we want to show to the user
-\u2022 time-Toast.LENGTH_SHORT or Toast.LENGTH_LONG
+\u2022 time-duration, Toast.LENGTH_SHORT or Toast.LENGTH_LONG
 `
