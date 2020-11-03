@@ -1,9 +1,9 @@
-import { ActivityIndicator } from 'react-native'
-import { act } from 'react-test-renderer'
+import { Reducer } from 'redux'
+import { IHomeReducerState, IState } from '.'
 import * as types from '../actions/actionTypes/homeActionTypes'
 import { SubjectDetails } from '../data/SubjectDetails'
 
-const initialState={
+const initialState:IHomeReducerState={
   mainTopic:[],
   splitedArticle:[],
   isLoading:false,
@@ -11,7 +11,7 @@ const initialState={
   articlesOrExamplesNames:[]
 }
 
-export default (state=initialState,action:any)=>{
+ const homeReducer:Reducer<IHomeReducerState>=(state=initialState,action:any)=>{
   switch(action.type){
    case types.GET_MAIN_TOPIC:
      return{
@@ -23,7 +23,7 @@ export default (state=initialState,action:any)=>{
        ...state,
        chosenArticle:action.payload
      }  
-   case types.GET_MAIN_TOPIC_ARTICLE:
+   case types.GET_SPLITED_MAIN_TOPIC_ARTICLE:
    
      return{
       ...state,
@@ -42,3 +42,4 @@ export default (state=initialState,action:any)=>{
     default: return state
   }
 }
+export default homeReducer

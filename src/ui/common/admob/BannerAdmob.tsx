@@ -10,7 +10,7 @@ const BannerAdmob = () => {
   return (
     <View style={{alignSelf:'center',position:'absolute',bottom:0}}>
      <BannerAd
-      unitId={adUnitId}
+      unitId={TestIds.BANNER}
       size={BannerAdSize.BANNER}
             
       requestOptions={{

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { View, StyleSheet, Text} from 'react-native'
 import * as action from '../../actions/homeActions'
 import { StackNavigationProp } from '@react-navigation/stack'
@@ -14,14 +14,17 @@ const ExamplesOrArticlesScreen = ({navigation}:Props) => {
  
   const mainTopic:string[] =['Articles','Examples']
 
-  const onItemPress=(item:string)=>{
-     action.setExampleOrArticleChoice(item)
-     navigation.navigate(screenNames.ListOfSubjects)
-  }
+  const onItemPress=useCallback(
+    (item:string)=>{
+      action.setExampleOrArticleChoice(item)
+      navigation.navigate(screenNames.ListOfSubjects)
+   },
+    [],
+  )
 
   return (
     <View style={styles.main}>
-      <CommonFlatList itemList={mainTopic} pressAction={(item)=>onItemPress(item)}/>
+      <CommonFlatList itemList={mainTopic} pressAction={onItemPress}/>
     </View>
   )
 }

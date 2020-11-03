@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet, FlatList, ListRenderItemInfo, ActionSheetIOS } from 'react-native'
+import React, { useCallback, useEffect } from 'react'
+import { View,  StyleSheet } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import * as action from '../actions/homeActions'
-import { RootState } from '../reducers/rootReducer'
+import * as action from '../../actions/homeActions'
+import { RootState } from '../../reducers/rootReducer'
 import { StackNavigationProp } from '@react-navigation/stack'
 import {  RouteProp } from '@react-navigation/native'
-import { screenNames } from '../navigation'
-import CommonFlatList from '../ui/common/CommonFlatList'
+import { screenNames } from '../../navigation'
+import CommonFlatList from '../../ui/common/CommonFlatList'
 
 interface Props {
   navigation: StackNavigationProp<any>
@@ -18,19 +18,19 @@ const TopicsListScreen = ({navigation,route}:Props) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(action.getMainTopic(route.params))
+    dispatch(action.getMainTopic())
   }, [])
   const mainTopic:[] = useSelector((state:RootState) => state.homeReducer.mainTopic)
 
  
-  const onItemPress=(item:string)=>{
+  const onItemPress=useCallback((item:string)=>{
       navigation.push(screenNames.ListOfSubjects,{item})
-  }
+  },[])
   
 
   return (
     <View style={styles.main}>
-      <CommonFlatList itemList={mainTopic} pressAction={(item)=>onItemPress(item)}/>
+      <CommonFlatList itemList={mainTopic} pressAction={onItemPress}/>
     </View>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, FlatList, ListRenderItemInfo, ActionSheetIOS, ViewPropTypes, ViewProps } from 'react-native'
 
 interface Props<T> {
@@ -8,27 +8,24 @@ interface Props<T> {
 }
 const CommonFlatList= <T extends string>({pressAction,itemList}:Props<T>) => {
 
-  useEffect(() => {
-
-  }, [])
-
-  const getAllSubjectNames=(item:ListRenderItemInfo<T>):any=>{
-  return (
-      <TouchableOpacity
-        testID={item.item}
-        style={styles.subjectContainer}
-        onPress={()=>{ pressAction(item.item)}
-        }>  
-        <Text style={styles.subjectName}>{item.item}</Text>
-      </TouchableOpacity>      
-    )
+  const getAllSubjectNames=useCallback((item:ListRenderItemInfo<T>)=>{
+      return (
+          <TouchableOpacity
+            testID={item.item}
+            style={styles.subjectContainer}
+            onPress={()=>{ pressAction(item.item)}
+            }>  
+            <Text style={styles.subjectName}>{item.item}</Text>
+          </TouchableOpacity>      
+        )
   }
+  ,[])
 
   return (
     <View style={styles.main}>
       <FlatList
         data={itemList}
-        renderItem={item=>getAllSubjectNames(item)}
+        renderItem={getAllSubjectNames}
         keyExtractor={(item,index)=>index.toString()}
       />
     </View>

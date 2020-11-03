@@ -4,7 +4,7 @@ import SplashScreen from 'react-native-splash-screen' // splashscreen
 import React from 'react'
 import CodeArea from './src/ui/screens/CodeArea'
 import {applyMiddleware, createStore} from 'redux'
-import rootReducer from './src/reducers/rootReducer'
+import rootReducer, { rootReducerr } from './src/reducers/rootReducer'
 import { Provider } from 'react-redux';
 import ListOfSubjects from './src/ui/screens/ListOfSubjects'
 import { NavigationContainer } from '@react-navigation/native';

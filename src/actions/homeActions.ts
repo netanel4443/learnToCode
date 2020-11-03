@@ -13,20 +13,24 @@ export const getMainTopic=()=>{
   }
 }
 
-export const passMainTopicArticle=(article:string)=>async(dispatch:any)=>{
+export const passSplitedMainTopicArticle=(article:string)=>async(dispatch:any)=>{
   let splitedArticle:string[]=[]
   
   if(article.length!==0){
     return(
-      splitedArticle= await new  Promise<string[]>(resolve => resolve(article.split(SPLIT_CHAR))),
+      splitedArticle= await new  Promise<string[]>(resolve =>  {
+          const splitedArr=article.split(SPLIT_CHAR)
+          resolve(splitedArr)
+      }),
+      
       dispatch({ 
-        type:types.GET_MAIN_TOPIC_ARTICLE,
+        type:types.GET_SPLITED_MAIN_TOPIC_ARTICLE,
         payload:splitedArticle
       })
     )
   }
   dispatch({ 
-    type:types.GET_MAIN_TOPIC_ARTICLE,
+    type:types.GET_SPLITED_MAIN_TOPIC_ARTICLE,
     payload:splitedArticle
   })
  

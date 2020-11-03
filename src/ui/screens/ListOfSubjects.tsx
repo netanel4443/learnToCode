@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, FlatList, ListRenderItemInfo, ActionSheetIOS } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import * as action from '../../actions/homeActions'
@@ -6,6 +6,7 @@ import { RootState } from '../../reducers/rootReducer'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { screenNames } from '../../navigation'
 import CommonFlatList from '../../ui/common/CommonFlatList'
+import { articlesOrExamplesNamesSelector } from '../../selectors/homeSelector'
 
 interface Props {
   navigation: StackNavigationProp<any>
@@ -13,22 +14,21 @@ interface Props {
 const ListOfSubjects = ({navigation}:Props) => {
 
   const dispatch = useDispatch()
-  const articlesOrExamplesNames:string[]= useSelector((state:RootState) => state.homeReducer.articlesOrExamplesNames)
+  const articlesOrExamplesNames= useSelector(articlesOrExamplesNamesSelector)
  
   useEffect(() => {
-    // dispatch(action.getMainTopic())
     dispatch(action.getExamplesOrArticleSubjects())
   }, [])
 
-  const onItemPress=(item:string)=>{
+  const onItemPress=useCallback((item:string)=>{
          navigation.navigate(screenNames.CodeArea)
         dispatch(action.setChosenSubject(item))
-  }
+  },[])
   
 
   return (
     <View testID='listOfSubject' style={styles.main}>
-      <CommonFlatList itemList={articlesOrExamplesNames} pressAction={(item)=>onItemPress(item)}/>
+      <CommonFlatList itemList={articlesOrExamplesNames} pressAction={onItemPress}/>
     </View>
   )
 }
