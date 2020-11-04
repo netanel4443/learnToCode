@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
-import { View,  ScrollView, StyleSheet, ActivityIndicator, } from 'react-native'
+import { View,  ScrollView, StyleSheet, ActivityIndicator, Text, } from 'react-native'
 import SyntaxHighlighter from 'react-native-syntax-highlighter'; 
 import { dark} from 'react-syntax-highlighter/styles/hljs';
 import HTMLView from 'react-native-htmlview';
@@ -15,8 +15,8 @@ const CodeArea = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-  
-      dispatch(action.passSplitedMainTopicArticle(chosenArticle))
+   
+       dispatch(action.passSplitedMainTopicArticle(chosenArticle))
     return () => {
       dispatch(action.passSplitedMainTopicArticle(''))//reset article length in order to show actionindicator next time this screen loads
       // showInterstitialAd()
@@ -25,9 +25,9 @@ const CodeArea = () => {
 
   const splitBetweenTextAndCode= useCallback(() => {
       const elementsArr:any[]=[]
-      console.log('here')
+
       Array.from(splitedArticle).forEach((textOrCode,index)=>{
-      
+   
        if(index%2!==0){
         elementsArr.push(
           <SyntaxHighlighter
@@ -65,7 +65,7 @@ const CodeArea = () => {
     <View style={{flex:1,backgroundColor:'#e6e6e6',flexDirection:'column'}}>
       {splitedArticle.length==0
         ? (<ActivityIndicator style={styles.indicator}  size='large' color={'#000'}/>)
-        : (<ScrollView> {splitBetweenTextAndCode()} </ScrollView> )     
+        : (<ScrollView>{splitBetweenTextAndCode()}</ScrollView> )     
       }
     </View>
   )

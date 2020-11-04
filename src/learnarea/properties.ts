@@ -37,6 +37,4 @@ lateinit val car:Car //won't work, immutable type
 lateinit var someNumber:Int //won't work, primitive type
 var car:Car?=null //works
 ${SPLIT_CHAR}
-
-
 `
