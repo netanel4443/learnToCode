@@ -1,5 +1,5 @@
 import * as types from './actionTypes/homeActionTypes'
-import {androidArticles} from '../android/articles/index'
+import topics from '../learnarea/index'
 import { TopicBuilder } from '../data/TopicBuilder'
 import androidTopic from '../android/index'
 const SPLIT_CHAR="$$"
@@ -9,7 +9,7 @@ const topicBuilder=new TopicBuilder()
 export const getMainTopic=()=>{
   return{
     type:types.GET_MAIN_TOPIC,
-    payload:androidArticles
+    payload:topics
   }
 }
 
