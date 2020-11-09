@@ -49,8 +49,8 @@ export const setExampleOrArticleChoice=(optionChosen:string)=>{
 
 export const setChosenSubject=(chosenSubject:string)=>{
  topicBuilder.setSubject(chosenSubject)
- const articlesOrExamples=androidTopic.get(topicBuilder.getArticleOrExample())?.get(topicBuilder.getSubject())?.subject
-
+ const articlesOrExamples=androidTopic.get(topicBuilder.getArticleOrExample())
+                                     ?.get(topicBuilder.getSubject())?.subject
   return{
     type:types.GET_CHOSEN_ARTICLE,
     payload:articlesOrExamples

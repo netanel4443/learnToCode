@@ -1,4 +1,4 @@
-import splashScreen from "../../android/examples/splashScreen"
+import splashScreen from "../../../android/examples/splashScreen"
 
 const SPLIT_CHAR='$$'
 
@@ -64,9 +64,30 @@ class  AnotherClass:TestClass(){
 }
 ${SPLIT_CHAR}
 private-we can guess what it means by its name.
-If a class has a property or a function with private modifier
-it can be accessed only inside its class (can be access inside inernal classed either)
-it can not be accessed in another classed even if this class inherits from it.
+If a class has a property or a function with a private modifier
+it can be accessed only inside its class (can be access inside inernal classes either)
+it can not be accessed in another classes even if this class inherits from it.
+${SPLIT_CHAR}
+open class TestClass{
+  private val privateModifier=1
+}
+
+//inheritance example 
+class  AnotherClass:TestClass(){
+
+  init {
+      println(privateModifier)// won't work
+  }
+}
+//TestClass instance example
+class  AnotherClass(){
+  val testClass=TestClass()
+  init {
+      println(testClass.privateModifier)// won't work
+  }
+}
+${SPLIT_CHAR}
+internal-this means that the member will be visibile in the same module.
 
 
 
