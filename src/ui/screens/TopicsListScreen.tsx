@@ -24,7 +24,8 @@ const TopicsListScreen = ({navigation,route}:Props) => {
 
  
   const onItemPress=useCallback((item:string)=>{
-      navigation.push(screenNames.ListOfSubjects,{item})
+      action.setChosenTopic(item)
+      navigation.push(screenNames.ExamplesOrArticlesScreen,{item})
   },[])
   
 

@@ -42,6 +42,9 @@ export const showOrHideLoadingSpinner=(visibility:boolean)=>{
     payload:visibility
   }
 }
+export const setChosenTopic=(topic:string)=>{
+  topicBuilder.setTopic(topic)
+}
 
 export const setExampleOrArticleChoice=(optionChosen:string)=>{
   topicBuilder.setArticleOrExample(optionChosen)
